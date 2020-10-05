@@ -1,0 +1,24 @@
+@@startuml
+autonumber "<b>[00]"
+hide footbox
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+
+Title SIM error recovery
+
+box "Disk layer" #LightBlue
+participant geom
+participant bioq
+end box
+
+box "CAM" #LightGreen
+participant periph
+participant xpt
+end box
+
+box "SIM" #Pink
+participant driver
+participant hardware
+end box
+
+@@enduml
