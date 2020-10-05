@@ -23,3 +23,6 @@ To freeze the queue, do the following for each CCB that you need to either turn 
 Now the recovery will happen. It will clear out the CCBs that are in the SIM, and not allow any new CCBs into the SIM until the error recovery is done. A correleary of this action is that if the SIM's error recovery decides that it can't carry on and has to remove all the periphs, no CCBs will be in flight. The SIM is responsible for clearing out any periph drivers by calling *cam_periph_invalidate* on them.
 
 Once the error recovery is complete, you need to clear the internal state, unfreeze the simq by calling *xpt_release_simq*.
+
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/bsdimp/cam-docs/main/cam_sim_error_recovery.uml)
+
