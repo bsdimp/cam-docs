@@ -1,0 +1,71 @@
+@@startuml
+autonumber "<b>[00]"
+hide footbox
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+
+Title Camcorder CAM flow
+
+box "Disk layer" #LightBlue
+participant geom
+participant bioq
+end box
+
+box "CAM" #LightGreen
+participant periph
+participant xpt
+end box
+
+box "SIM" #Pink
+participant driver
+participant hardware
+end box
+
+== I/O Dispatch ==
+activate geom
+geom->periph: disk->strategy()
+deactivate geom
+activate periph
+periph->xpt : xpt_action()
+deactivate periph
+activate xpt
+xpt->driver : sim_action()
+deactivate xpt
+activate driver
+note I/O happens
+deactivate driver
+
+== I/O Completion ==
+hardware o-> driver: driver_intr()
+activate driver
+
+driver->driver : callout_stop()
+driver->driver : bus_dmamap_unload()
+driver->driver : process completion
+note right: see SIM error\nrecovery diagram
+driver->driver : deallocate command
+driver->xpt : xpt_done()
+deactivate driver
+activate xpt
+xpt->xpt: camisr()
+activate xpt
+
+xpt->periph : periph->done()
+deactivate xpt
+deactivate xpt
+activate periph
+periph->periph: process completion
+periph->periph : cam_periph_error()
+note right: see periph error\nrecovery diagram
+periph->xpt : xpt_release_ccb()
+activate xpt
+xpt->xpt
+note right: xpt_schedule()\nmay be called
+xpt-->periph
+deactivate xpt
+periph->geom : biodone()
+deactivate periph
+activate geom
+||45||
+
+@@enduml
