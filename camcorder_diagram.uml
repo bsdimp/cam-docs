@@ -13,7 +13,6 @@ end box
 box "CAM" #LightGreen
 participant periph
 participant xpt
-participant bioq
 end box
 
 box "SIM" #Pink
@@ -26,20 +25,6 @@ activate geom
 geom->periph: disk->strategy()
 deactivate geom
 activate periph
-
-periph->xpt : xpt_schedule()
-deactivate periph
-activate xpt
-xpt --> geom : devq empty or frozen
-
-xpt->xpt : xpt_devq_alloc()
-xpt->periph : periph->start()
-deactivate xpt
-activate periph
-periph->bioq : bioq_takefirst()
-activate bioq
-bioq-->periph
-deactivate bioq
 
 periph->periph : compose protocol\ncommand
 periph->xpt : xpt_action()
