@@ -4,7 +4,7 @@ hide footbox
 skinparam ParticipantPadding 25
 skinparam BoxPadding 10
 
-Title Camcorder CAM interactions
+Title Normal CAM flow (simplified)
 
 box "Disk layer" #LightBlue
 participant geom
@@ -13,7 +13,6 @@ end box
 box "CAM" #LightGreen
 participant periph
 participant xpt
-participant camcorder
 end box
 
 box "SIM" #Pink
@@ -29,7 +28,6 @@ activate periph
 
 periph->periph : compose protocol\ncommand
 periph->xpt : xpt_action()
-xpt->camcorder : dostuff()
 deactivate periph
 activate xpt
 xpt->driver : sim_action()
