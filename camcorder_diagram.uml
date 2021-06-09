@@ -4,7 +4,7 @@ hide footbox
 skinparam ParticipantPadding 25
 skinparam BoxPadding 10
 
-Title CAM I/O path
+Title Camcorder CAM interactions
 
 box "Disk layer" #LightBlue
 participant geom
