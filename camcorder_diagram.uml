@@ -54,12 +54,12 @@ driver->xpt : xpt_done()
 deactivate driver
 activate xpt
 
-xpt->periph : periph->done()
 xpt->camcorder : cam_pf_xfertap()
 activate camcorder
 camcorder->camcorder : packet\nto tap
 camcorder->xpt
 deactivate camcorder
+xpt->periph : periph->done()
 deactivate xpt
 activate periph
 periph->geom : biodone()
