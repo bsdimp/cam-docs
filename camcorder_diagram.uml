@@ -36,6 +36,7 @@ activate xpt
 deactivate periph
 xpt->camcorder : cam_pf_xfertap()
 activate camcorder
+camcorder->camcorder : packet\nto tap
 camcorder->xpt
 deactivate camcorder
 xpt->driver : sim_action()
@@ -54,6 +55,11 @@ deactivate driver
 activate xpt
 
 xpt->periph : periph->done()
+xpt->camcorder : cam_pf_xfertap()
+activate camcorder
+camcorder->camcorder : packet\nto tap
+camcorder->xpt
+deactivate camcorder
 deactivate xpt
 activate periph
 periph->geom : biodone()
