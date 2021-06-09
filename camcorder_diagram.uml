@@ -13,6 +13,9 @@ end box
 box "CAM" #LightGreen
 participant periph
 participant xpt
+end box
+
+box "Camcorder" #Orange
 participant camcorder
 end box
 
