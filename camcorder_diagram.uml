@@ -34,11 +34,11 @@ periph->periph : compose protocol\ncommand
 periph->xpt : xpt_action()
 activate xpt
 deactivate periph
-xpt->camcorder : cam_pf_xfertap()
 activate camcorder
+xpt->camcorder : cam_pf_xfertap()
 camcorder->xpt
-xpt->driver : sim_action()
 deactivate camcorder
+xpt->driver : sim_action()
 deactivate xpt
 activate driver
 driver->o hardware : enqueue to hardware
