@@ -46,9 +46,9 @@ activate camcorder
 camcorder->camcorder : packet\nto tap
 camcorder->xpt
 deactivate camcorder
+activate periph
 xpt->periph : periph->done()
 deactivate xpt
-activate periph
 deactivate periph
 ||45||
 
