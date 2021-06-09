@@ -35,6 +35,7 @@ activate xpt
 periph->xpt : xpt_action()
 deactivate periph
 xpt->camcorder : cam_pf_xfertap()
+camcorder->xpt
 activate camcorder
 xpt->driver : sim_action()
 deactivate camcorder
