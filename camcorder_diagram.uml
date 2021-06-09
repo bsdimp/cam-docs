@@ -34,8 +34,8 @@ periph->periph : compose protocol\ncommand
 periph->xpt : xpt_action()
 activate xpt
 deactivate periph
-activate camcorder
 xpt->camcorder : cam_pf_xfertap()
+activate camcorder
 camcorder->xpt
 deactivate camcorder
 xpt->driver : sim_action()
