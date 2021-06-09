@@ -32,7 +32,6 @@ activate xpt
 xpt->driver : sim_action()
 deactivate xpt
 activate driver
-note I/O happens
 deactivate driver
 
 == I/O Completion ==
