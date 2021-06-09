@@ -31,13 +31,13 @@ deactivate geom
 activate periph
 
 periph->periph : compose protocol\ncommand
-activate xpt
 periph->xpt : xpt_action()
-actiate camcorder
-xpt->camcorder : cam_pf_xfertap()
+activate xpt
 deactivate periph
-deactiate camcorder
+xpt->camcorder : cam_pf_xfertap()
+actiate camcorder
 xpt->driver : sim_action()
+deactiate camcorder
 deactivate xpt
 activate driver
 driver->o hardware : enqueue to hardware
