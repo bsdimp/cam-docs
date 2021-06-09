@@ -1,3 +1,3 @@
 # CAM Normal Flow
 
-![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/bsdimp/cam-docs/main/camcorder.uml)
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/bsdimp/cam-docs/main/camcorder_diagram.uml)
