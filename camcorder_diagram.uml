@@ -6,10 +6,6 @@ skinparam BoxPadding 10
 
 Title Camcorder CAM interactions
 
-box "Disk layer" #LightBlue
-participant geom
-end box
-
 box "CAM" #LightGreen
 participant periph
 participant xpt
@@ -21,15 +17,10 @@ end box
 
 box "SIM" #Pink
 participant driver
-participant hardware
 end box
 
 == I/O Dispatch ==
-activate geom
-geom->periph: disk->strategy()
-deactivate geom
 activate periph
-
 periph->periph : compose protocol\ncommand
 periph->xpt : xpt_action()
 activate xpt
@@ -42,18 +33,14 @@ deactivate camcorder
 xpt->driver : sim_action()
 deactivate xpt
 activate driver
-driver->o hardware : enqueue to hardware
 driver --> geom : return
 deactivate driver
-note over hardware: hardware\nprocesses\ncommand
 
 == I/O Completion ==
-hardware o-> driver: driver_intr()
 activate driver
 driver->xpt : xpt_done()
 deactivate driver
 activate xpt
-
 xpt->camcorder : cam_pf_xfertap()
 activate camcorder
 camcorder->camcorder : packet\nto tap
@@ -62,9 +49,7 @@ deactivate camcorder
 xpt->periph : periph->done()
 deactivate xpt
 activate periph
-periph->geom : biodone()
 deactivate periph
-activate geom
 ||45||
 
 @@enduml
