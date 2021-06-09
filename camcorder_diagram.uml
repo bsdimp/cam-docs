@@ -37,7 +37,7 @@ driver --> geom : return
 deactivate driver
 
 == I/O Completion ==
-activate driver
+
 driver->xpt : xpt_done()
 deactivate driver
 activate xpt
